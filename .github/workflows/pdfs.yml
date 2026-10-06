@@ -1,0 +1,60 @@
+name: Public contract PDFs
+
+on:
+  push:
+    paths:
+      - 'partner-agreement/**'
+      - 'nda/**'
+      - 'security-policy/**'
+      - 'ai-guidelines/**'
+      - 'print/**'
+      - 'scripts/**'
+      - 'README.md'
+      - '.github/workflows/pdfs.yml'
+  pull_request:
+    paths:
+      - 'partner-agreement/**'
+      - 'nda/**'
+      - 'security-policy/**'
+      - 'ai-guidelines/**'
+      - 'print/**'
+      - 'scripts/**'
+      - 'README.md'
+      - '.github/workflows/pdfs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: contract-pdfs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out public templates
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Install pinned PDF dependencies
+        run: python -m pip install -r print/requirements.txt
+      - name: Validate sources and build PDFs
+        run: |
+          # A fresh directory guarantees that the artifact contains only this build.
+          test ! -d output/pdf
+          python scripts/build_pdfs.py
+      - name: Upload the six public PDFs and source manifest
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: public-contract-pdfs
+          path: output/pdf/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0

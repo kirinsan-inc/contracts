@@ -1,0 +1,8 @@
+[
+  {"source": "partner-agreement/2026-10-05.md", "alias": "partner-agreement/latest.md", "output": "partner-agreement-2026-10-05.pdf", "label": "PARTNER AGREEMENT", "version": "2026-10-05"},
+  {"source": "nda/2026-10-05.md", "alias": "nda/latest.md", "output": "nda-2026-10-05.pdf", "label": "NON-DISCLOSURE AGREEMENT", "version": "2026-10-05"},
+  {"source": "security-policy/2026-10-05.md", "alias": "security-policy/latest.md", "output": "security-policy-2026-10-05.pdf", "label": "INFORMATION SECURITY", "version": "2026-10-05"},
+  {"source": "ai-guidelines/2026-10-06.md", "alias": "ai-guidelines/latest.md", "output": "ai-guidelines-2026-10-06.pdf", "label": "AI USE / GUIDELINES", "version": "2026-10-06"},
+  {"source": "partner-agreement/guide-2026-10-05.md", "alias": "partner-agreement/guide.md", "output": "partner-agreement-guide-2026-10-05.pdf", "label": "PARTNER AGREEMENT / GUIDE", "version": "2026-10-05", "keep_final_sections": 2},
+  {"source": "nda/guide-2026-10-05.md", "alias": "nda/guide.md", "output": "nda-guide-2026-10-05.pdf", "label": "NON-DISCLOSURE AGREEMENT / GUIDE", "version": "2026-10-05"}
+]

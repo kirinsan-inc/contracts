@@ -1,0 +1,12 @@
+# Generated documents and local QA previews
+/output/
+/tmp/
+/.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Local environment values and credentials must not enter this public repository.
+.env
+.env.*
+!.env.example
